@@ -13,7 +13,8 @@ class MoviesController < ApplicationController
   def index
     order = params[:orden] # retrieve sort column
     @movies = order == nil ? movies = Movie.all : Movie.order("#{order} ASC")
-    clase = order == nil ? "" : "hilite"
+    @title_class = order == "title" ? "hilite" : ""
+    @release_date_class = order == "release_date" ? "hilite" : ""
   end
 
   def new
